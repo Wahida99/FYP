@@ -1,17 +1,21 @@
-The squence of these tutorial is given below:
+The squence of these tutorials is given below:
 
-1. ASM file to TEXT file (removing unwanted data)
 
-2. CSV data based on frequency Count of Opcode
+1. Byte file to image Coversion
 
-3. Reducing opcode feature 
+2. Resizing images to 32x32
 
-4. Data Splitting
+3. Images to Comma-Separated Values(csv)
 
-5. Min-max normalization
+4. Stratified sampling
 
-6. Feature Selection
+5. Min-max normalization(Byte)
 
-The preprocessed data of ASM files plus the data use in these tutorial can be found on the ASM folder of following drive link:
+6. Feature extractor(CNN-optimization)
+
+7. Feature extractor (CNN with pretrained encoder layers) - optimization
+
+
+The preprocessed data of Byte files plus the data use in these tutorial can be found on the Byte folder of following drive link:
 
 https://drive.google.com/drive/folders/1s7EC4s_-hP9q5vEhs-3vAubspcZbBADK?usp=sharing
