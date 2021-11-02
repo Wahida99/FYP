@@ -1,9 +1,17 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Mon Mar  4 09:15:29 2019
+Created on Tue Apr 23 13:54:41 2019
 
 @author: PR-LAB
+"""
+
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Mar  4 09:15:29 2019
+
+@author: aqsas
 """
 
 from torch.utils.data.dataset import Dataset
@@ -11,8 +19,8 @@ from torchvision import transforms
 import pandas as pd
 import numpy as np
 import torch
-class CustomDatasetFromImages(Dataset):
-    
+from PIL import Image
+class CSV_READER(Dataset):
     def __init__(self, csv_path):
         # Transforms
         self.to_tensor = transforms.ToTensor()
@@ -29,21 +37,38 @@ class CustomDatasetFromImages(Dataset):
         self.operation_arr = np.asarray(self.data_info.iloc[:, -2])
         # Calculate len
         self.data_len = len(self.data_info.index)
-        
     def __getitem__(self, index):
         # Get image name from the pandas df
         single_image_name = self.image_arr[index]
+        #print(single_image_name)
+    
+        #print(len(single_image_name))
+        # Open image
+        '''
+        img_as_img = Image.open(single_image_name)
+
+        # Check if there is an operation
+        some_operation = self.operation_arr[index]
+        # If there is an operation
+        if some_operation:
+            # Do some operation on image
+            # ...
+            # ...
+            pass
+        # Transform image to tensor
+        '''
+        #single_image_name =Image.fromarray(single_image_name)
+        #single_image_name = self.transforms(single_image_name)
+        #img_as_tensor = self.to_tensor(np.array(single_image_name))
+    
 
         single_image_name = np.array(single_image_name)
-        single_image_name = np.resize(single_image_name,(32,32))
         img_as_tensor = torch.Tensor(single_image_name)
         img_as_tensor = torch.unsqueeze(img_as_tensor,0)
         single_image_label = self.label_arr[index]
-        name=self.operation_arr[index]
-        return (img_as_tensor,name,single_image_label)
+#        name=self.operation_arr[index]
+        return (img_as_tensor,single_image_label)
         
 
     def __len__(self):
-        return self.data_len    
-    
-
+        return self.data_len
